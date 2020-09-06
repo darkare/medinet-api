@@ -18,7 +18,7 @@ namespace MedinetAPI.Data
         }
         public IEnumerable<Object> GetPhotos()
         {
-            return _dbContext.Photos.Select(f => new { f.Id, f.Description, f.FileName, f.Title }).ToList();
+            return _dbContext.Photos.OrderByDescending(x => x.CreatedDate).Select(f => new { f.Id, f.Description, f.FileName, f.Title }).ToList();
         }
 
         public Photo GetPhotoById(int photoId)
